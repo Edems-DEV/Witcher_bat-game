@@ -1,4 +1,4 @@
-# Witcher-BATCHFILE_edition
+# Witcher-theme game writen in BATCHFILE
 ![](https://i.imgur.com/hBnXyeO.png)
 ## INFO
 This Game is made for fun. And it is not licensed.
