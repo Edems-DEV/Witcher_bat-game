@@ -17,12 +17,15 @@ Collect as much money as possible.
 1. unique menu
 
 ![](https://i.imgur.com/cUPXQHe.png)
+
 2. revolution combat system :kappa:
 
 ![](https://i.imgur.com/e6XIgPh.png)
+
 3. Gamble
 
 ![](https://i.imgur.com/5CjqDuV.png)
+
 4. Fast Travel
 
 ![](https://i.imgur.com/1QPzX76.png)
