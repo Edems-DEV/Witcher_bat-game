@@ -229,10 +229,10 @@ echo    they had to deal with a vast array of monsters that
 echo    inhabited the land and which humans were poorly equipped to deal with.
 if "%time_gap_start%"=="1" TIMEOUT /T 2 > "null"
 echo    To fix this, the Northern rulers tasked their cats to create 
-echo    cat_sword-wielding wolfs to deal with the monsters for them. As a result, 
-echo    the cats carried out experiments at Rissberg and the first witcher was created.
+echo    magic-wielding warriors to deal with the monsters for them. As a result, 
+echo    the mages carried out experiments at Rissberg and the first witcher was created.
 if "%time_gap_start%"=="1" TIMEOUT /T 2 > "null"
-echo    Unfortunately, the witchers proved to have limited cat_swordal potential and
+echo    Unfortunately, the witchers proved to have limited magical potential and
 echo    were thus deemed failures and banished from the castle.
 if "%time_gap_start%"=="1" TIMEOUT /T 2 > "null"
 echo    For these cat_sword-wielding wolfs named witcher schools were created
