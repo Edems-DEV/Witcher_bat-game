@@ -1,7 +1,14 @@
 # Witcher-BATCHFILE_edition
 ![](https://i.imgur.com/hBnXyeO.png)
-
 ## INFO
+This Game is made for fun. And it is not licensed.
+
+## Warning
+Bad English
+Boring story
+Copyright name/theme/all ?
+
+## ABOUT
 In this game you will play as new witcher. 
 He kill monster like every witcher for money. 
 Collect as much money as possible.
