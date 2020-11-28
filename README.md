@@ -1,7 +1,8 @@
 # Witcher-theme game writen in BATCHFILE
 ![](https://i.imgur.com/hBnXyeO.png)
 ## INFO
-This Game is made for fun. And it is not licensed.
+This Game is made for fun. Mainly as a minigame [to this game](https://github.com/Edems-DEV/MR.Robot_bat-game).
+And it is not licensed.
 
 ## Warning
 Bad English
