@@ -17,7 +17,11 @@ Collect as much money as possible.
     Scrolling through numbers **1-4**
     Confirm the selected offer with the number **0**
 
-
+## TO DO
+- Add music
+- Fix some bugs
+- Much more ...
+( but im lazy :/ )
 
 
 ## Screen shots from game
