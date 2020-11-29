@@ -253,25 +253,41 @@ echo    %player_name% was trained in [cat/wolf/bear].
 set /p choice=%BS%   Answer:
 
 
-::nastaveni typu postavy
+:: character type setting
 if /i NOT "%choice%"=="%choice:wolf=%" ( set character=wolf& set weapon_default=stit& set weapon=wolf_sword)
 if /i NOT "%choice%"=="%choice:cat=%" ( set character=cat& set weapon_default=cats_crossbow& set weapon=cat_sword)
 if /i NOT "%choice%"=="%choice:bear=%" ( set character=bear& set weapon_default=bear_crossbow& set weapon=bear_sword)
 if "%character%"=="" ( goto START )
-::POSUNUTI DO MENU Z VYBERU CHARACTERS
+:: MOVE TO MENU FROM SELECT CHARACTERS
 goto MENU
 
 :MONSTER_NEST
+::music off - before battle
+Taskkill /IM "wscript.exe" /F>nul 2>&1
+goto battlestart
+:musicbattle
+set file=Resource/Battle.mp3
+(  echo Set Sound = CreateObject("WMPlayer.OCX.7"^)
+   echo Sound.URL = "%file%"
+   echo Sound.Controls.play
+   echo do while Sound.currentmedia.duration = 0
+   echo wscript.sleep 100
+   echo loop
+   echo wscript.sleep (int(Sound.currentmedia.duration^)+1^)*1000) >Resource/sound.vbs
+start /min Resource/sound.vbs
+goto battlemusicon
+
+:battlestart
 CLS
 echo.
-::definovani protivniku
-set /a protivnik_choice=%random% %%4
-:: Definovani nazvu protivniku a thrownot protivniku /zivoty/
-:: TO DO - delete = protivnik_sklonovani
-if "%protivnik_choice%"=="0" ( set enemy=Drowner & set enemy_small_letter=drowner& set protivnik_sklonovani=drowner& set enemy_health=100)
-if "%protivnik_choice%"=="1" ( set enemy=Griffin& set enemy_small_letter=griffin& set protivnik_sklonovani=griffin& set enemy_health=150)
-if "%protivnik_choice%"=="2" ( set enemy=RockTroll& set enemy_small_letter=rocktroll& set protivnik_sklonovani=rocktroll& set enemy_health=150)
-if "%protivnik_choice%"=="3" ( set enemy=Wolf& set enemy_small_letter=wolf& set protivnik_sklonovani=wolf& set enemy_health=100)
+:: defined by the opponent
+set /a enemy_choice=%random% %%4
+:: Define the name of the opponent and the thrownot of the opponent / lives /
+::TODO - delete = enemy_sklonovani
+if "%enemy_choice%"=="0" ( set enemy=Drowner & set enemy_small_letter=drowner& set enemy_sklonovani=drowner& set enemy_health=100)
+if "%enemy_choice%"=="1" ( set enemy=Griffin& set enemy_small_letter=griffin& set enemy_sklonovani=griffin& set enemy_health=150)
+if "%enemy_choice%"=="2" ( set enemy=RockTroll& set enemy_small_letter=rocktroll& set enemy_sklonovani=rocktroll& set enemy_health=150)
+if "%enemy_choice%"=="3" ( set enemy=Wolf& set enemy_small_letter=wolf& set enemy_sklonovani=wolf& set enemy_health=100)
 
 FOR /F %%# IN ('COPY /Z "%~dpf0" NUL') DO SET "CR=%%#"
 FOR /L %%# IN (10,-1,1) DO (SET/P "=%BS% You're on your way to a dark monsternest... %%# seconds. !CR!"<NUL:
@@ -293,6 +309,8 @@ TIMEOUT /T 1 > "null"
 echo  You're approaching the monster nest.
 TIMEOUT /T 3 > "null"
 echo  Your witcher mode suddenly activated.
+goto musicbattle
+:battlemusicon
 TIMEOUT /T 3 > "null"
 echo  You saw a %enemy_small_letter%^^!
 echo.
@@ -559,7 +577,7 @@ goto battle )
 
 
 :DEFEAT
-
+::TODO music
 :print_menu
 CLS
 echo.
@@ -649,6 +667,19 @@ goto MENU
 
 
 :TOWN
+
+:TOWNMUSIC
+Taskkill /IM "wscript.exe" /F>nul 2>&1
+set file=Resource/Town.mp3
+(  echo Set Sound = CreateObject("WMPlayer.OCX.7"^)
+   echo Sound.URL = "%file%"
+   echo Sound.Controls.play
+   echo do while Sound.currentmedia.duration = 0
+   echo wscript.sleep 100
+   echo loop
+   echo wscript.sleep (int(Sound.currentmedia.duration^)+1^)*1000) >Resource/sound.vbs
+start /min Resource/sound.vbs
+
 CLS
 ::Defining variables / time gap determines whether pauses should be performed between views /
 set doctor_action=
@@ -1122,6 +1153,8 @@ goto MENU
 
 
 :MENU
+:: music off menu
+Taskkill /IM "wscript.exe" /F>nul 2>&1
 :: Defining variables in MENU! time gap determines whether to start TIMEOUTY - Resetting the GO variable
 set time_gap=1
 set go=
@@ -1166,7 +1199,7 @@ set /p go=%BS% Answer:
 if "%go%"=="" ( set time_gap=0 & goto menu_repeat )
 if /i NOT "%go%"=="%go:whiteorchard=%" ( goto action_WHITE_orchard  )
 if /i NOT "%go%"=="%go:monsternest=%" ( goto action_MONSTERNEST )
-if /i NOT "%go%"=="%go:lens=%" ( goto action_Velen_&_Novigrad )
+if /i NOT "%go%"=="%go:velen=%" ( goto action_Velen_&_Novigrad )
 if %go%==1 ( goto action_MONSTERNEST)
 if %go%==2 ( goto action_WHITE_orchard )
 if %go%==3 (goto action_Velen_&_Novigrad )
@@ -1185,6 +1218,8 @@ goto TOWN
 goto MONSTER_NEST
 
 :END
+::music off
+Taskkill /IM "wscript.exe" /F>nul 2>&1
 pause > "null"
 
 
